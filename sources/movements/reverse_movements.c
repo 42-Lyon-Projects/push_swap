@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   reverse_movements.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 17:46:18 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/10/27 17:46:18 by jbadaire         ###   ########.fr       */
+/*   Created: 2023/10/31 05:36:54 by jbadaire          #+#    #+#             */
+/*   Updated: 2023/10/31 05:36:54 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
-# include "./libft/libft.h"
+#include "../../includes/push_swap.h"
 
-int	*handle_inputs_digit(char **input);
-int	handle_input_digit(char *input);
+int	reverse_rotate_a(t_stacks *stacks)
+{
 
-t_boolean check_duplicates(int *array);
-t_boolean is_duplicated(int nb, int *array);
+}
 
-#endif
+int	reverse_rotate_b(t_stacks *stacks)
+{
+
+}
+
+int	reverse_rotate_a_and_b(t_stacks *stacks)
+{
+
+}

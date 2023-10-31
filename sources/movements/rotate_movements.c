@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rotate_movements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 17:47:51 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/10/27 17:47:51 by jbadaire         ###   ########.fr       */
+/*   Created: 2023/10/31 05:33:26 by jbadaire          #+#    #+#             */
+/*   Updated: 2023/10/31 05:33:26 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
-int main(int argc, char *argv[])
+int	rotate_a(t_stacks *stacks)
 {
-	int	*array;
 
-	array = NULL;
-	if(argc < 2)
-		return (0);
-	else
-	{
-		array = handle_inputs_digit(argv);
-		if(array == NULL)
-			return (0);
-		if (check_duplicates(array))
-			return (ft_printf("Error\n", 0));
-
-		free(array);
-	}
-	return 0;
 }
+
+int	rotate_b(t_stacks *stacks)
+{
+
+}
+
+int	rotate_a_and_b(t_stacks *stacks)
+{
+
+}
+

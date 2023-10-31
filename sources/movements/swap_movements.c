@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handler.c                                   :+:      :+:    :+:   */
+/*   swap_movements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 05:12:45 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/10/28 05:15:18 by jbadaire         ###   ########.fr       */
+/*   Created: 2023/10/31 05:29:01 by jbadaire          #+#    #+#             */
+/*   Updated: 2023/10/31 05:29:01 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
-t_boolean check_duplicates(int *array)
+int	swap_a(t_stacks *stacks)
 {
-	int	index;
 
-	index = 0;
-	while (array[index])
-	{
-		if (is_duplicated(array[index], array))
-			return (_true);
-	}
-	return (_false);
 }
 
-t_boolean is_duplicated(int nb, int *array)
+int swap_b(t_stacks *stacks)
 {
-	int	index;
-	int amount;
 
-	index = 0;
-	amount = 0;
-	while (array[index])
-		if (array[index++] == nb)
-			amount++;
-	return (amount > 1);
+}
+
+int	swap_a_and_b(t_stacks *stacks)
+{
+
 }

@@ -1,24 +1,29 @@
 NAME = pushswap
-MAKE_LIBFT = make -C libft
+MAKE_LIBFT = make -C ./dependencies/libft
 
-SRCS =  main.c				\
+FILES = main.c				\
 		input_transformer.c	\
 		errors_handler.c	\
+		stack.c				\
+		calculate.c			\
 
-LIBFT_FLAGS = -L./libft -l:libft.a
+LIBFT_FLAGS = -L./dependencies/libft -l:libft.a
 OBJ_DIRECTORY = ./.obj/
 
 CC = cc
 
-FLAGS = -c -Wall -Wextra -Werror -g3
-INCLUDES = ./push_swap.h
-OBJS = $(addprefix $(OBJ_DIRECTORY), $(SRCS:.c=.o))
+#FLAGS = -c -Wall -Wextra -Werror -g3
+FLAGS = -c -g3
+
+INCLUDES = ./includes/push_swap.h
+SOURCES = $(addprefix "sources/", $(SRCS:.c=.o))
+OBJS = $(addprefix $(OBJ_DIRECTORY), $(FILES:.c=.o))
 
 $(NAME): $(OBJ_DIRECTORY) $(OBJS)
 	$(MAKE_LIBFT)
 	$(CC) $(OBJS) $(LIBFT_FLAGS) -o $(NAME)
 
-$(OBJ_DIRECTORY)%.o: %.c Makefile $(INCLUDES)
+$(OBJ_DIRECTORY)%.o: ./sources/%.c Makefile $(INCLUDES)
 	$(CC) $(FLAGS) $< -o $@
 
 $(OBJ_DIRECTORY):
