@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 02:30:51 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/10/31 02:53:09 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:36:45 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -69,24 +69,14 @@ void	recalc(t_stacks *stacks)
 	recalc_b(stacks);
 }
 
-size_t	ft_intlen(long *array)
-{
-	size_t	index;
-
-	index = 0;
-	while (array[index])
-		index++;
-	return (index);
-}
-
-t_boolean	is_ascending(long *array)
+t_boolean	is_ascending(long *array, t_stacks *stacks)
 {
 	int	index;
 	int	old;
 
 	index = 0;
 	old = 0;
-	while (array[index] >= old)
+	while (index < stacks->values.array_length && array[index] >= old)
 		old = array[index++];
-	return (index >= ft_intlen(array));
+	return (index >= stacks->values.array_length);
 }

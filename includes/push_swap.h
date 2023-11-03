@@ -25,6 +25,7 @@ typedef struct s_stack_values
 	int					min_b_index;
 	long				max_b;
 	int					max_b_index;
+	int					array_length;
 }						t_stack_values;
 
 typedef struct s_stack
@@ -40,12 +41,12 @@ typedef struct s_stacks
 	t_stack_values		values;
 }						t_stacks;
 
-long		*handle_inputs_digit(char **input);
+long		*handle_inputs_digit(char **input, t_stacks *stacks);
 long		handle_input_digit(char *input);
 
-t_boolean	has_duplicates(long *array);
-t_boolean	is_duplicated(long nb, long *array);
-t_boolean	contains_only_int(long *array);
+t_boolean	has_duplicates(long *array, t_stacks stacks);
+t_boolean	is_duplicated(long nb, long *array, t_stacks stacks);
+t_boolean	contains_only_int(long *array, t_stacks stacks);
 
 t_stacks	init_stacks(void);
 t_stack		*create_stack_node(int content);
@@ -55,7 +56,7 @@ void		fill_stack(t_stacks *stacks, long *array);
 void		recalc_a(t_stacks *stacks);
 void		recalc_b(t_stacks *stacks);
 void		recalc(t_stacks *stacks);
-t_boolean	is_ascending(long *array);
+t_boolean	is_ascending(long *array, t_stacks *stacks);
 
 // # PUSHS # //
 int 		push_a(t_stacks *stacks);

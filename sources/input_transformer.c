@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:04:57 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/10/28 05:04:57 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:47:52 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	count_integer(char **input)
 	return (amount);
 }
 
-long	*handle_inputs_digit(char **input)
+#include "stdio.h"
+long	*handle_inputs_digit(char **input, t_stacks *stacks)
 {
 	int		input_index;
 	int		splitted_index;
@@ -44,7 +45,8 @@ long	*handle_inputs_digit(char **input)
 	input_index = 1;
 	splitted_index = 0;
 	array_index = 0;
-	array = malloc(sizeof(long) * count_integer(input));
+	stacks->values.array_length = count_integer(input);
+	array = malloc(sizeof(long) * stacks->values.array_length);
 	if (!array)
 		return (NULL);
 	while (input_index < (int) ft_str_tab_len(input))
@@ -53,10 +55,14 @@ long	*handle_inputs_digit(char **input)
 		while (splitted[splitted_index])
 		{
 			if (handle_input_digit(splitted[splitted_index]) == -1)
-				return (free(splitted), ft_printf("Error"), NULL);
-			array[array_index++] = ft_atoi(splitted[splitted_index++]);
+				return (free(splitted), ft_printf("Error\n"), NULL);
+			int atoi = ft_atoi(splitted[splitted_index++]);
+			printf("%d", array_index);
+			array[array_index] = atoi;
+			array_index++;
 		}
 		splitted_index = 0;
+		strlen()
 	}
 	return (array);
 }
