@@ -12,28 +12,28 @@
 
 #include "../includes/push_swap.h"
 
-t_boolean	has_duplicates(long *array, t_stacks stacks)
+t_boolean	has_duplicates(long *array)
 {
 	int	index;
 
 	index = 0;
-	while (index < stacks.values.array_length)
+	while (array[index])
 	{
-		if (is_duplicated(array[index], array, stacks))
+		if (is_duplicated(array[index], array))
 			return (_true);
 		index++;
 	}
 	return (_false);
 }
 
-t_boolean	is_duplicated(long nb, long *array, t_stacks stacks)
+t_boolean	is_duplicated(long nb, long *array)
 {
 	int	index;
 	int	amount;
 
 	index = 0;
 	amount = 0;
-	while (index < stacks.values.array_length)
+	while (array[index])
 	{
 		if (array[index] == nb)
 			amount++;
@@ -42,12 +42,12 @@ t_boolean	is_duplicated(long nb, long *array, t_stacks stacks)
 	return (amount > 1);
 }
 
-t_boolean	contains_only_int(long *array, t_stacks stacks)
+t_boolean	contains_only_int(long *array)
 {
 	int	index;
 
 	index = 0;
-	while (index < stacks.values.array_length)
+	while (array[index])
 	{
 		if (array[index] > INT_MAX || array[index] < INT_MIN)
 			return (_false);

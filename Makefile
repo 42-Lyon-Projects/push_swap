@@ -3,9 +3,7 @@ MAKE_LIBFT = make -C ./dependencies/libft
 
 FILES = main.c				\
 		input_transformer.c	\
-		errors_handler.c	\
-		stack.c				\
-		calculate.c			\
+		errors_handler.c
 
 LIBFT_FLAGS = -L./dependencies/libft -l:libft.a
 OBJ_DIRECTORY = ./.obj/

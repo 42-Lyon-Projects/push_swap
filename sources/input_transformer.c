@@ -6,35 +6,36 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:04:57 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/03 15:47:52 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:07:28 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	count_integer(char **input)
-{
-	int		input_index;
-	int		index;
-	int		amount;
+#include "stdio.h"
 
-	input_index = 1;
+long	*ft_realloc(long *array, int count, long value)
+{
+	long	*new;
+	int		index;
+
+	new = ft_calloc(count + 1, sizeof(long));
 	index = 0;
-	amount = 0;
-	while (input[input_index])
+	if (!new)
+		return (NULL);
+	while (index < count)
 	{
-		while (input[input_index][index])
-		{
-			if (ft_isdigit(input[input_index][index++]))
-				amount++;
-		}
-		input_index++;
+		new[index] = array[index];
+		index++;
 	}
-	return (amount);
+	new[index] = value;
+	ft_printf("Count :%d\n", count + 1);
+	ft_printf("Value :%d\n", index);
+	free(array);
+	return (new);
 }
 
-#include "stdio.h"
-long	*handle_inputs_digit(char **input, t_stacks *stacks)
+long	*handle_inputs_digit(char **input)
 {
 	int		input_index;
 	int		splitted_index;
@@ -45,8 +46,7 @@ long	*handle_inputs_digit(char **input, t_stacks *stacks)
 	input_index = 1;
 	splitted_index = 0;
 	array_index = 0;
-	stacks->values.array_length = count_integer(input);
-	array = malloc(sizeof(long) * stacks->values.array_length);
+	array = ft_calloc(2, sizeof(long));
 	if (!array)
 		return (NULL);
 	while (input_index < (int) ft_str_tab_len(input))
@@ -56,13 +56,11 @@ long	*handle_inputs_digit(char **input, t_stacks *stacks)
 		{
 			if (handle_input_digit(splitted[splitted_index]) == -1)
 				return (free(splitted), ft_printf("Error\n"), NULL);
-			int atoi = ft_atoi(splitted[splitted_index++]);
-			printf("%d", array_index);
-			array[array_index] = atoi;
+			long atoi = ft_atoi(splitted[splitted_index++]);
+			array = ft_realloc(array, array_index, atoi);
 			array_index++;
 		}
 		splitted_index = 0;
-		strlen()
 	}
 	return (array);
 }

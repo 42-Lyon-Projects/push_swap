@@ -15,26 +15,35 @@
 int	main(int argc, char *argv[])
 {
 	long		*array;
-	t_stacks	stacks;
 
 	array = NULL;
 	if (argc < 2)
 		return (0);
-	array = handle_inputs_digit(argv, &stacks);
+	array = handle_inputs_digit(argv);
 	if (array == NULL)
 		return (0);
-	if (has_duplicates(array, stacks) || !contains_only_int(array, stacks))
+	if (has_duplicates(array) || !contains_only_int(array))
 		return (free(array), ft_printf("Error\n", 0));
-	if (is_ascending(array, &stacks))
-		return (free(array), 0);
-	stacks = init_stacks();
-	push_swap(array, &stacks);
+	//if (is_ascending(array))
+	//	return (free(array), 0);
+	push_swap(array);
 	return (0);
 }
 
-void	push_swap(long *array, t_stacks *stacks)
+
+void print_array(long *array)
 {
+	int index = 0;
+	while (array[index])
+	{
+		ft_printf("%d", array[index]);
+		index++;
+	}
+}
+
+void	push_swap(long *array)
+{
+	print_array(array);
 	ft_printf("ALGO\n");
-	fill_stack(stacks, array);
 	free(array);
 }
