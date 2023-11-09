@@ -1,9 +1,15 @@
 NAME = pushswap
 MAKE_LIBFT = make -C ./dependencies/libft
 
-FILES = main.c				\
-		input_transformer.c	\
-		errors_handler.c
+FILES = main.c						\
+		input_transformer.c			\
+		errors_handler.c			\
+		stack.c						\
+		movements/push_movement.c	\
+		movements/reverse_movement.c\
+		movements/rotate_movement.c	\
+		movements/swap_movement.c	\
+
 
 LIBFT_FLAGS = -L./dependencies/libft -l:libft.a
 OBJ_DIRECTORY = ./.obj/
