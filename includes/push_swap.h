@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:46:18 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/10/27 17:46:18 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:57:01 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,40 @@ long		*handle_inputs_digit(char **input, int orig_tab_index, int index);
 t_boolean	has_duplicates(long *array);
 t_boolean	is_duplicated(long nb, long *array);
 t_boolean	contains_only_int(long *array);
-t_boolean	is_ascending(long *array);
-
-void		push_swap(long	*array, t_stacks *stacks);
 
 // # STACKS # //
 
 t_stacks	init_stacks(void);
+void		fill_stack(t_stacks *stacks, const long *array);
+void		free_stack(t_stack *head);
+void		ft_display_stacks(t_stacks stacks);
+t_boolean	is_sorted(t_stack a_stack);
+
+
+// # NODES # //
 t_stack		*create_node(int content);
+t_stack		*last_node(t_stack *node);
 void		add_node_back(t_stack **stack, t_stack *node);
-void		fill_stack(t_stacks *stacks, long *array);
+void		add_node_front(t_stack *stack, t_stack *new);
+void		remove_node_back(t_stack **stack);
+
 
 // # PUSHS # //
 int 		push_a(t_stacks *stacks);
-int			push_b(t_stacks *stacks);
+int 		push_b(t_stacks *stacks);
 
 // # REVERSES # //
-int			reverse_rotate_a(t_stacks *stacks);
-int			reverse_rotate_b(t_stacks *stacks);
+int			reverse_rotate(t_stack **head);
 int			reverse_rotate_a_and_b(t_stacks *stacks);
 
 // # ROTATES # //
-int			rotate_a(t_stacks *stacks);
-int			rotate_b(t_stacks *stacks);
+int			rotate(t_stack **head);
 int			rotate_a_and_b(t_stacks *stacks);
 
 // # SWAPS # //
-int			swap_a(t_stacks *stacks);
-int			swap_b(t_stacks *stacks);
+int			swap(t_stack *head);
 int			swap_a_and_b(t_stacks *stacks);
 
-void		push_swap(long	*array, t_stacks *stacks);
+void		push_swap(t_stacks *stacks);
 
 #endif

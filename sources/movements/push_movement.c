@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:34:03 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/07 21:38:21 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:48:50 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,40 @@
 
 int	push_a(t_stacks *stacks)
 {
+	int		value;
 	t_stack	*tmp;
-	t_stack	*tmp_2;
+	t_stack	*new_first_a;
 
-	tmp = NULL;
-	tmp_2 = NULL;
 	if (!stacks->stack_b)
 		return (-1);
-	tmp = stacks->stack_b;
-	tmp_2 = stacks->stack_b;
-	if (stacks->stack_a)
-		tmp->next = stacks->stack_a;
-	stacks->stack_a = tmp;
-	stacks->stack_b = stacks->stack_b->next;
-	free(tmp_2);
+	value = stacks->stack_b->content;
+	tmp = stacks->stack_b->next;
+	free(stacks->stack_b);
+	stacks->stack_b = tmp;
+	new_first_a = create_node(value);
+	if (!new_first_a)
+		return (-1);
+	new_first_a->next = stacks->stack_a;
+	stacks->stack_a = new_first_a;
 	return (0);
 }
 
 int	push_b(t_stacks *stacks)
 {
+	int		value;
 	t_stack	*tmp;
-	t_stack	*tmp_2;
+	t_stack	*new_first_b;
 
-	tmp = NULL;
-	tmp_2 = NULL;
 	if (!stacks->stack_a)
 		return (-1);
-	tmp = stacks->stack_a;
-	tmp_2 = stacks->stack_a;
-	if (stacks->stack_b)
-		tmp->next = stacks->stack_b;
-	stacks->stack_b = tmp;
-	stacks->stack_a = stacks->stack_a->next;
-	free(tmp_2);
+	value = stacks->stack_a->content;
+	tmp = stacks->stack_a->next;
+	free(stacks->stack_a);
+	stacks->stack_a = tmp;
+	new_first_b = create_node(value);
+	if (!new_first_b)
+		return (-1);
+	new_first_b->next = stacks->stack_b;
+	stacks->stack_b = new_first_b;
 	return (0);
 }

@@ -5,6 +5,7 @@ FILES = main.c						\
 		input_transformer.c			\
 		errors_handler.c			\
 		stack.c						\
+		node.c						\
 		movements/push_movement.c	\
 		movements/reverse_movement.c\
 		movements/rotate_movement.c	\
@@ -16,7 +17,8 @@ OBJ_DIRECTORY = ./.obj/
 
 CC = cc
 
-FLAGS = -c -Wall -Wextra -Werror -g3
+#FLAGS = -c -Wall -Wextra -Werror -g3
+FLAGS = -c -g3
 
 INCLUDES = ./includes/push_swap.h
 SOURCES = $(addprefix "sources/", $(SRCS:.c=.o))
@@ -30,7 +32,8 @@ $(OBJ_DIRECTORY)%.o: ./sources/%.c Makefile $(INCLUDES)
 	$(CC) $(FLAGS) $< -o $@
 
 $(OBJ_DIRECTORY):
-	mkdir -p $(OBJ_DIRECTORY)
+	mkdir -p $(OBJ_DIRECTORY)/movements
+
 
 all : $(NAME)
 
