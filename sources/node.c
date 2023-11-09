@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 09:51:55 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/09 13:27:10 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:48:36 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,17 @@ t_stack	*last_node(t_stack *node)
 
 void	add_node_back(t_stack **stack, t_stack *node)
 {
-	t_stack	*tmp_stack;
+	t_stack *tmp_stack;
 
 	if (!*stack)
 	{
 		*stack = node;
-		return ;
+		return;
 	}
 	tmp_stack = *stack;
 	while (tmp_stack && tmp_stack->next)
 		tmp_stack = tmp_stack->next;
 	tmp_stack->next = node;
-}
-
-void	add_node_front(t_stack *stack, t_stack *new)
-{
-	new->next = stack;
-	stack = new;
 }
 
 void	remove_node_back(t_stack **stack)

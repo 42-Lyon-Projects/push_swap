@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:46:18 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/09 13:57:01 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:08:35 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_boolean	is_sorted(t_stack a_stack);
 t_stack		*create_node(int content);
 t_stack		*last_node(t_stack *node);
 void		add_node_back(t_stack **stack, t_stack *node);
-void		add_node_front(t_stack *stack, t_stack *new);
 void		remove_node_back(t_stack **stack);
 
 
