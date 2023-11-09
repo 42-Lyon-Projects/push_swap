@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 09:51:55 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/09 14:48:36 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:05:39 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_stack	*create_node(int content)
 
 t_stack	*last_node(t_stack *node)
 {
-	t_stack *tmp_stack;
+	t_stack	*tmp_stack;
+
 	tmp_stack = node;
 	if (!tmp_stack)
 		return (tmp_stack);
@@ -37,12 +38,12 @@ t_stack	*last_node(t_stack *node)
 
 void	add_node_back(t_stack **stack, t_stack *node)
 {
-	t_stack *tmp_stack;
+	t_stack	*tmp_stack;
 
 	if (!*stack)
 	{
 		*stack = node;
-		return;
+		return ;
 	}
 	tmp_stack = *stack;
 	while (tmp_stack && tmp_stack->next)
@@ -54,9 +55,10 @@ void	remove_node_back(t_stack **stack)
 {
 	t_stack	*tmp_stack;
 	t_stack	*last_node;
-	if(!*stack)
+
+	if (!*stack)
 		return ;
-	if(!(*stack)->next)
+	if (!(*stack)->next)
 	{
 		*stack = NULL;
 		return ;

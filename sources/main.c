@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-void	tests_movements(t_stacks *stacks);
 
 int	main(int argc, char *argv[])
 {
@@ -31,10 +30,7 @@ int	main(int argc, char *argv[])
 	free(array);
 	if (is_sorted(*stacks.stack_a))
 		return (free_stack(stacks.stack_a), 0);
-
-	tests_movements(&stacks);
-
-	//push_swap(array);
+	push_swap(&stacks);
 	return (0);
 }
 
@@ -42,16 +38,4 @@ void	push_swap(t_stacks *stacks)
 {
 	(void) stacks;
 	ft_printf("ALGO\n");
-	//free(array);
-}
-
-
-void	tests_movements(t_stacks *stacks)
-{
-	ft_display_stacks(*stacks);
-	push_b(stacks);
-	ft_display_stacks(*stacks);
-	push_a(stacks);
-	ft_display_stacks(*stacks);
-	free_stack(stacks->stack_a);
 }

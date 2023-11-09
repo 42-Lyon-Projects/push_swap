@@ -2,8 +2,8 @@ NAME = pushswap
 MAKE_LIBFT = make -C ./dependencies/libft
 
 FILES = main.c						\
-		input_transformer.c			\
-		errors_handler.c			\
+		parsing/input_transformer.c	\
+		parsing/errors_handler.c	\
 		stack.c						\
 		node.c						\
 		movements/push_movement.c	\
@@ -32,8 +32,7 @@ $(OBJ_DIRECTORY)%.o: ./sources/%.c Makefile $(INCLUDES)
 	$(CC) $(FLAGS) $< -o $@
 
 $(OBJ_DIRECTORY):
-	mkdir -p $(OBJ_DIRECTORY)/movements
-
+	mkdir -p $(OBJ_DIRECTORY)/movements $(OBJ_DIRECTORY)/parsing
 
 all : $(NAME)
 

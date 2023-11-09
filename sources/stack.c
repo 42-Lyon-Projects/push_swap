@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:32:01 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/09 12:28:14 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:05:11 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	fill_stack(t_stacks *stacks, const long *array)
 	int			value;
 
 	index = 0;
-	value = 0;
 	while (array[index])
 	{
 		value = ((int) array[index++]);
@@ -44,7 +43,7 @@ t_boolean	is_sorted(t_stack a_stack)
 	node = &a_stack;
 	while (node)
 	{
-		if(previous_value > node->content)
+		if (previous_value > node->content)
 			return (_false);
 		previous_value = node->content;
 		node = node->next;
@@ -54,7 +53,7 @@ t_boolean	is_sorted(t_stack a_stack)
 
 void	free_stack(t_stack *head)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = NULL;
 	while (head->next)

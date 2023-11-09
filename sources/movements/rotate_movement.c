@@ -27,11 +27,10 @@ int	rotate(t_stack **head)
 	return (0);
 }
 
-
-int	rotate_a_and_b(t_stacks *stacks)
+void	rotate_a_and_b(t_stacks *stacks)
 {
-	if(stacks->stack_a)
+	if (stacks->stack_a)
 		reverse_rotate(&stacks->stack_a);
-	if(stacks->stack_b)
+	if (stacks->stack_b)
 		reverse_rotate(&stacks->stack_b);
 }
