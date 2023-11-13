@@ -14,39 +14,6 @@
 
 #include "../includes/push_swap.h"
 
-t_boolean	ft_array_is_sorted(const int *array)
-{
-	int	previous_value;
-	int	current;
-	int	index;
-
-	previous_value = INT_MIN;
-	index = 0;
-	while (array[index])
-	{
-		current = array[index];
-		if (previous_value > current)
-			return (_false);
-		previous_value = current;
-		index++;
-	}
-	return (_true);
-}
-
-t_boolean	ft_array_contains(int *array, int search)
-{
-	int	index;
-
-	index = 0;
-	while (array[index])
-	{
-		if (array[index] == search)
-			return (_true);
-		index++;
-	}
-	return (_false);
-}
-
 void	ft_stack_to_sorted_array(t_stacks *stacks , int length, int *array, int index, int sub_index)
 {
 	int		last_selected;
@@ -60,7 +27,7 @@ void	ft_stack_to_sorted_array(t_stacks *stacks , int length, int *array, int ind
 		while (sub_index < length)
 		{
 			node = get_node_at(stacks->stack_a, sub_index++);
-			while (node != NULL && ft_array_contains(array, node->content))
+			while (node != NULL && ft_array_contains_value(array, node->content))
 				node = get_node_at(stacks->stack_a, sub_index++);
 			if(!node)
 				break;

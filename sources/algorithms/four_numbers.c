@@ -6,13 +6,12 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:29:33 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/13 15:29:34 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:02:57 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void sort_three(t_stacks *stacks)
+void	sort_four(t_stacks *stacks)
 {
-
 }

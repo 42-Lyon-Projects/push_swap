@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int	rotate(t_stack **head)
+int	rotate(t_stack **head, char *type, t_boolean print)
 {
 	t_stack	*next;
 	t_stack	*new;
@@ -24,6 +24,7 @@ int	rotate(t_stack **head)
 	free(*head);
 	*head = next;
 	add_node_back(&next, new);
+	ft_printf("%s\n", type);
 	return (0);
 }
 

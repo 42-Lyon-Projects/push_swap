@@ -3,9 +3,10 @@ MAKE_LIBFT = make -C ./dependencies/libft
 
 FILES = main.c						\
 		parsing/input_transformer.c	\
-		parsing/errors_handler.c	\
-		stack.c						\
-		node.c						\
+		stack_manager.c				\
+		stack_utils.c				\
+		node_manager.c				\
+		array_utils.c				\
 		utils.c						\
 		movements/push_movement.c	\
 		movements/reverse_movement.c\
@@ -17,7 +18,7 @@ FILES = main.c						\
 		algorithms/five_numbers.c	\
 		algorithms/more_numbers.c	\
 
-
+LIBFT = ./dependencies/libft/libft.a
 LIBFT_FLAGS = -L./dependencies/libft -l:libft.a
 OBJ_DIRECTORY = ./.obj/
 
@@ -30,15 +31,18 @@ INCLUDES = ./includes/push_swap.h
 SOURCES = $(addprefix "sources/", $(SRCS:.c=.o))
 OBJS = $(addprefix $(OBJ_DIRECTORY), $(FILES:.c=.o))
 
-$(NAME): $(OBJ_DIRECTORY) $(OBJS)
+$(NAME): $(OBJ_DIRECTORY) $(OBJS) $(LIBFT)
 	$(MAKE_LIBFT)
 	$(CC) $(OBJS) $(LIBFT_FLAGS) -o $(NAME)
+
+$(LIBFT): force
+	$(MAKE_LIBFT)
 
 $(OBJ_DIRECTORY)%.o: ./sources/%.c Makefile $(INCLUDES)
 	$(CC) $(FLAGS) $< -o $@
 
 $(OBJ_DIRECTORY):
-	mkdir -p $(OBJ_DIRECTORY)/movements $(OBJ_DIRECTORY)/parsing
+	mkdir -p $(OBJ_DIRECTORY)/movements $(OBJ_DIRECTORY)/parsing $(OBJ_DIRECTORY)/algorithms
 
 all : $(NAME)
 
@@ -50,3 +54,7 @@ fclean : clean
 	rm -rf $(NAME)
 
 re : fclean all
+
+force :
+
+.PHONY: all clean fclean re force

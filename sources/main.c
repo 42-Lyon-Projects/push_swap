@@ -23,12 +23,12 @@ int	main(int argc, char *argv[])
 	array = handle_inputs_digit(argv, 1, 0);
 	if (array == NULL)
 		return (0);
-	if (has_duplicates(array) || !contains_only_int(array))
+	if (!ft_array_contains_only_int(array) || ft_array_has_duplicates(array))
 		return (free(array), ft_printf("Error 2\n", 0));
 	stacks = init_stacks();
 	fill_stack(&stacks, array);
 	free(array);
-	if (is_sorted(*stacks.stack_a))
+	if (ft_stack_is_sorted(*stacks.stack_a))
 		return (free_stack(stacks.stack_a), 0);
 	push_swap(&stacks);
 	return (0);
@@ -42,4 +42,6 @@ void	push_swap(t_stacks *stacks)
 
 	ft_stack_to_sorted_array(stacks , stacks->length, mlc, 0, 0);
 	ft_indexing_stack(&stacks->stack_a, mlc);
+	if (stacks->length > 5)
+		sort_more(stacks);
 }
