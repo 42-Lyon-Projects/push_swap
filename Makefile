@@ -6,6 +6,7 @@ FILES = main.c						\
 		parsing/errors_handler.c	\
 		stack.c						\
 		node.c						\
+		utils.c						\
 		movements/push_movement.c	\
 		movements/reverse_movement.c\
 		movements/rotate_movement.c	\

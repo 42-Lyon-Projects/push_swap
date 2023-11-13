@@ -36,6 +36,11 @@ int	main(int argc, char *argv[])
 
 void	push_swap(t_stacks *stacks)
 {
-	(void) stacks;
+	int	*mlc = ft_calloc(stacks->length + 1, sizeof (int));
+	if(!mlc)
+		return ;
+
+	ft_stack_to_sorted_array(stacks , stacks->length, mlc, 0, 0);
+	ft_indexing_stack(&stacks->stack_a, mlc);
 	ft_printf("ALGO\n");
 }
