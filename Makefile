@@ -11,6 +11,11 @@ FILES = main.c						\
 		movements/reverse_movement.c\
 		movements/rotate_movement.c	\
 		movements/swap_movement.c	\
+		algorithms/two_numbers.c	\
+		algorithms/three_numbers.c	\
+		algorithms/four_numbers.c	\
+		algorithms/five_numbers.c	\
+		algorithms/more_numbers.c	\
 
 
 LIBFT_FLAGS = -L./dependencies/libft -l:libft.a

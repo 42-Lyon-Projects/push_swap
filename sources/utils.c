@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbadaire <jbadaire@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 08:33:09 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/13 10:03:59 by jbadaire         ###   ########.fr       */
+/*   Created: 2023/11/13 15:20:01 by jbadaire          #+#    #+#             */
+/*   Updated: 2023/11/13 15:20:01 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "../includes/push_swap.h"
 

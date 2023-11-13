@@ -42,5 +42,4 @@ void	push_swap(t_stacks *stacks)
 
 	ft_stack_to_sorted_array(stacks , stacks->length, mlc, 0, 0);
 	ft_indexing_stack(&stacks->stack_a, mlc);
-	ft_printf("ALGO\n");
 }
