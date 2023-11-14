@@ -26,6 +26,7 @@ typedef struct s_stacks
 {
 	t_stack				*stack_a;
 	t_stack				*stack_b;
+	int					*input;
 	int					*array;
 	int					length;
 }						t_stacks;
@@ -73,6 +74,7 @@ void		push_swap(t_stacks *stacks);
 
 // # UTILS # //
 void		ft_stack_to_sorted_array(t_stacks *stacks , int length, int *array, int index, int sub_index);
+void		ft_free(t_stacks *stacks);
 void		ft_free_and_exit(t_stacks *stacks);
 
 // # ALGORITHMS # //

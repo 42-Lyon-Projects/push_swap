@@ -22,13 +22,15 @@ int	main(int argc, char *argv[])
 		return (0);
 	stacks = init_stacks();
 	array = handle_inputs_digit(&stacks, argv, 1, 0);
+	stacks.input = array;
 	if (array == NULL)
 		return (0);
 	if (!ft_array_contains_only_int(array, stacks.length) || ft_array_has_duplicates(array, stacks.length))
-		return (free(array), ft_printf("Error\n", 0), 0);
+		return (ft_free(&stacks), ft_printf("Error\n", 0), 0);
 	fill_stack(&stacks, array);
+	if (ft_stack_is_sorted(stacks.stack_a))
+		ft_free_and_exit(&stacks);
 	push_swap(&stacks);
-	free(array);
 	return (0);
 }
 
@@ -38,18 +40,10 @@ void	push_swap(t_stacks *stacks)
 	if(!mlc)
 		return ;
 	stacks->array = mlc;
-
 	ft_stack_to_sorted_array(stacks , stacks->length, mlc, 0, 0);
 	re_indexing_stacks(stacks, mlc);
 
-	if (ft_stack_is_sorted(stacks->stack_a)) {
-		free_stack(stacks->stack_a);
-		ft_printf("Is sorted");
-		return ;
-	}
-
-	ft_display_stacks(*stacks);
 	if (stacks->length > 5)
 		sort_more(stacks);
-	ft_display_stacks(*stacks);
+	ft_free_and_exit(stacks);
 }

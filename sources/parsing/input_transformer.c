@@ -44,7 +44,7 @@ static int	ft_array_len(char **input)
 		while (splitted[split_index])
 		{
 			if (handle_input_digit(splitted[split_index]) == -1)
-				return (0);
+				return (ft_free_split(splitted), 0);
 			split_index++;
 		}
 		tab_len += split_index;

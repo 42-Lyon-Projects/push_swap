@@ -51,10 +51,21 @@ void	re_indexing_stacks(t_stacks *stacks, int *mlc)
 	//ft_display_stacks(*stacks);
 
 }
+
+void	ft_free(t_stacks *stacks)
+{
+	if (stacks->array)
+		free(stacks->array);
+	if (stacks->input)
+		free(stacks->input);
+	if (stacks->stack_a)
+		free_stack(stacks->stack_a);
+	if (stacks->stack_b)
+		free_stack(stacks->stack_b);
+}
+
 void	ft_free_and_exit(t_stacks *stacks)
 {
-	free(stacks->array);
-	free_stack(stacks->stack_a);
-	free_stack(stacks->stack_b);
+	ft_free(stacks);
 	exit(0);
 }
