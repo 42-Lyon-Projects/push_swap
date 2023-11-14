@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:20 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/13 15:20:21 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:53:10 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void sort_more(t_stacks *stacks)
 
 	stack_length = ft_stack_size(stacks->stack_a);
 	bits_index = 0;
-	while (!ft_stack_is_sorted(*stacks->stack_a))
+	while (!ft_stack_is_sorted(stacks->stack_a))
 	{
 		index = 0;
 		while (index++ < stack_length)

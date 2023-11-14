@@ -22,10 +22,10 @@ LIBFT = ./dependencies/libft/libft.a
 LIBFT_FLAGS = -L./dependencies/libft -l:libft.a
 OBJ_DIRECTORY = ./.obj/
 
-CC = cc
+CC = gcc
 
-#FLAGS = -c -Wall -Wextra -Werror -g3
-FLAGS = -c -g3
+FLAGS = -c -Wall -Wextra -Werror -g3
+#FLAGS = -c -g3 
 
 INCLUDES = ./includes/push_swap.h
 SOURCES = $(addprefix "sources/", $(SRCS:.c=.o))

@@ -27,7 +27,7 @@ void	ft_stack_to_sorted_array(t_stacks *stacks , int length, int *array, int ind
 		while (sub_index < length)
 		{
 			node = get_node_at(stacks->stack_a, sub_index++);
-			while (node != NULL && ft_array_contains_value(array, node->content))
+			while (node != NULL && ft_array_contains_value(array, node->content, stacks->length))
 				node = get_node_at(stacks->stack_a, sub_index++);
 			if(!node)
 				break;
@@ -41,8 +41,19 @@ void	ft_stack_to_sorted_array(t_stacks *stacks , int length, int *array, int ind
 	}
 }
 
+
+void	re_indexing_stacks(t_stacks *stacks, int *mlc)
+{
+	if (stacks->stack_a)
+		ft_indexing_stack(&stacks->stack_a, mlc, stacks->length);
+	if (stacks->stack_b)
+		ft_indexing_stack(&stacks->stack_b, mlc, stacks->length);
+	//ft_display_stacks(*stacks);
+
+}
 void	ft_free_and_exit(t_stacks *stacks)
 {
+	free(stacks->array);
 	free_stack(stacks->stack_a);
 	free_stack(stacks->stack_b);
 	exit(0);

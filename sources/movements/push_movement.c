@@ -31,6 +31,7 @@ int	push_a(t_stacks *stacks, char *type, t_boolean print)
 	stacks->stack_a = new_first_a;
 	if (print)
 		ft_printf("%s\n", type);
+	re_indexing_stacks(stacks, stacks->array);
 	return (0);
 }
 
@@ -53,5 +54,6 @@ int	push_b(t_stacks *stacks, char *type, t_boolean print)
 	stacks->stack_b = new_first_b;
 	if (print)
 		ft_printf("%s\n", type);
+	re_indexing_stacks(stacks, stacks->array);
 	return (0);
 }

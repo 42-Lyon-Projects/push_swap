@@ -14,5 +14,5 @@
 
 void sort_five(t_stacks *stacks)
 {
-
+	(void) stacks;
 }

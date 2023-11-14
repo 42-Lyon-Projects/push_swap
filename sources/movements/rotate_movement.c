@@ -26,6 +26,7 @@ void	rotate(t_stacks *stacks, t_stack **head, char *type, t_boolean print)
 	add_node_back(&next, new);
 	if (print)
 		ft_printf("%s\n", type);
+	re_indexing_stacks(stacks, stacks->array);
 }
 
 void	rotate_a_and_b(t_stacks *stacks, char *type, t_boolean print)

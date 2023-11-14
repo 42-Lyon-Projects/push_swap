@@ -24,6 +24,7 @@ void	reverse_rotate(t_stacks *stacks, t_stack **head, char *type, t_boolean prin
 	remove_node_back(head);
 	if (print)
 		ft_printf("%s\n", type);
+	re_indexing_stacks(stacks, stacks->array);
 }
 
 void	reverse_rotate_a_and_b(t_stacks *stacks, char *type, t_boolean print)

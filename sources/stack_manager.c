@@ -19,20 +19,21 @@ t_stacks init_stacks(void)
 	stacks.stack_a = NULL;
 	stacks.stack_b = NULL;
 	stacks.length = 0;
+	stacks.array = NULL;
 	return (stacks);
 }
 
-void fill_stack(t_stacks *stacks, const long *array)
+#include "stdio.h"
+void fill_stack(t_stacks *stacks, const int *array)
 {
 	int index;
 	int value;
 
 	index = 0;
-	while (array[index])
+	while (index < stacks->length)
 	{
 		value = ((int) array[index++]);
 		add_node_back(&stacks->stack_a, create_node(value));
-		stacks->length = index;
 	}
 }
 
@@ -41,7 +42,7 @@ void free_stack(t_stack *head)
 	t_stack *tmp;
 
 	tmp = NULL;
-	while (head->next)
+	while (head)
 	{
 		tmp = head;
 		head = head->next;
@@ -50,17 +51,21 @@ void free_stack(t_stack *head)
 	free(head);
 }
 
-void ft_indexing_stack(t_stack **head_a, const int *array)
+void ft_indexing_stack(t_stack **head, const int *array, int array_length)
 {
 	int index;
 	t_stack *tmp_stack;
 
-	index = 0;
-	while (array[index])
+	index = 1;
+	if(head == NULL || *head == NULL)
+		return ;
+	while (index < array_length + 1)
 	{
-		tmp_stack = (*head_a);
-		while (tmp_stack->content != array[index])
+		tmp_stack = (*head);
+		while (tmp_stack && tmp_stack->content != array[index - 1])
 			tmp_stack = tmp_stack->next;
-		tmp_stack->index = index++;
+		if (tmp_stack)
+			tmp_stack->index = index;
+		index++;
 	}
 }

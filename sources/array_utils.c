@@ -12,14 +12,14 @@
 
 #include "../includes/push_swap.h"
 
-static t_boolean	is_duplicated(long nb, const long *array)
+static t_boolean	is_duplicated(int nb, const int *array, int length)
 {
 	int	index;
 	int	amount;
 
 	index = 0;
 	amount = 0;
-	while (array[index])
+	while (index < length)
 	{
 		if (array[index] == nb)
 			amount++;
@@ -28,12 +28,12 @@ static t_boolean	is_duplicated(long nb, const long *array)
 	return (amount > 1);
 }
 
-t_boolean	ft_array_contains_value(const int *array, int search)
+t_boolean	ft_array_contains_value(const int *array, int search, int length)
 {
 	int	index;
 
 	index = 0;
-	while (array[index])
+	while (index < length)
 	{
 		if (array[index] == search)
 			return (_true);
@@ -42,12 +42,12 @@ t_boolean	ft_array_contains_value(const int *array, int search)
 	return (_false);
 }
 
-t_boolean	ft_array_contains_only_int(const long *array)
+t_boolean	ft_array_contains_only_int(const int *array, int length)
 {
 	int	index;
 
 	index = 0;
-	while (array[index])
+	while (index < length)
 	{
 		if (array[index] > INT_MAX || array[index] < INT_MIN)
 			return (_false);
@@ -56,7 +56,7 @@ t_boolean	ft_array_contains_only_int(const long *array)
 	return (_true);
 }
 
-t_boolean	ft_array_is_sorted(const int *array)
+t_boolean	ft_array_is_sorted(const int *array, int length)
 {
 	int	previous_value;
 	int	current;
@@ -64,7 +64,7 @@ t_boolean	ft_array_is_sorted(const int *array)
 
 	previous_value = INT_MIN;
 	index = 0;
-	while (array[index])
+	while (index < length)
 	{
 		current = array[index];
 		if (previous_value > current)
@@ -75,14 +75,14 @@ t_boolean	ft_array_is_sorted(const int *array)
 	return (_true);
 }
 
-t_boolean	ft_array_has_duplicates(const long *array)
+t_boolean	ft_array_has_duplicates(const int *array, int length)
 {
 	int	index;
 
 	index = 0;
-	while (array[index])
+	while (index < length)
 	{
-		if (is_duplicated(array[index], array))
+		if (is_duplicated(array[index], array, length))
 			return (_true);
 		index++;
 	}

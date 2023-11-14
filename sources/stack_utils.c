@@ -6,19 +6,20 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:32:01 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/13 14:21:30 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:44:08 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_boolean	ft_stack_is_sorted(t_stack a_stack)
+
+t_boolean	ft_stack_is_sorted(t_stack *a_stack)
 {
 	t_stack *node;
 	long previous_value;
 
 	previous_value = LONG_MIN;
-	node = &a_stack;
+	node = a_stack;
 	while (node)
 	{
 		if (previous_value > node->content)
@@ -52,7 +53,7 @@ void	ft_display_stacks(t_stacks stacks)
 	int index = 0;
 	while (tmp_a)
 	{
-		ft_printf("Position [%d] | Content : %d\n", index, tmp_a->content);
+		ft_printf("Position [%d] | Content : %d\n", tmp_a->index, tmp_a->content);
 		index++;
 		tmp_a = tmp_a->next;
 	}

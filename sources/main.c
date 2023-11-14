@@ -14,23 +14,21 @@
 
 int	main(int argc, char *argv[])
 {
-	long		*array;
-	t_stacks	stacks;
+	int *array;
+	t_stacks stacks;
 
 	array = NULL;
 	if (argc < 2)
 		return (0);
-	array = handle_inputs_digit(argv, 1, 0);
+	stacks = init_stacks();
+	array = handle_inputs_digit(&stacks, argv, 1, 0);
 	if (array == NULL)
 		return (0);
-	if (!ft_array_contains_only_int(array) || ft_array_has_duplicates(array))
-		return (free(array), ft_printf("Error 2\n", 0));
-	stacks = init_stacks();
+	if (!ft_array_contains_only_int(array, stacks.length) || ft_array_has_duplicates(array, stacks.length))
+		return (free(array), ft_printf("Error\n", 0), 0);
 	fill_stack(&stacks, array);
-	free(array);
-	if (ft_stack_is_sorted(*stacks.stack_a))
-		return (free_stack(stacks.stack_a), 0);
 	push_swap(&stacks);
+	free(array);
 	return (0);
 }
 
@@ -39,9 +37,19 @@ void	push_swap(t_stacks *stacks)
 	int	*mlc = ft_calloc(stacks->length + 1, sizeof (int));
 	if(!mlc)
 		return ;
+	stacks->array = mlc;
 
 	ft_stack_to_sorted_array(stacks , stacks->length, mlc, 0, 0);
-	ft_indexing_stack(&stacks->stack_a, mlc);
+	re_indexing_stacks(stacks, mlc);
+
+	if (ft_stack_is_sorted(stacks->stack_a)) {
+		free_stack(stacks->stack_a);
+		ft_printf("Is sorted");
+		return ;
+	}
+
+	ft_display_stacks(*stacks);
 	if (stacks->length > 5)
 		sort_more(stacks);
+	ft_display_stacks(*stacks);
 }

@@ -14,4 +14,5 @@
 
 void	sort_four(t_stacks *stacks)
 {
+	(void) stacks;
 }

@@ -14,9 +14,9 @@
 
 #include "stdio.h"
 
-static long	handle_input_digit(char *input)
+static int	handle_input_digit(char *input)
 {
-	long	index;
+	int	index;
 
 	index = 0;
 	while (input && index < (int) ft_strlen(input))
@@ -55,14 +55,14 @@ static int	ft_array_len(char **input)
 	return (tab_len);
 }
 
-long	*handle_inputs_digit(char **input, int original_array_index, int index)
+int	*handle_inputs_digit(t_stacks *stacks, char **input, int original_array_index, int index)
 {
 	int		split_index;
 	char	**split;
-	long	*array;
+	int		*array;
 
 	split_index = 0;
-	array = ft_calloc(ft_array_len(input) + 1, sizeof(long));
+	array = (int *) malloc((stacks->length = ft_array_len(input)) * sizeof(int));
 	if (!array)
 		return (NULL);
 	while (index < (int) ft_str_tab_len(input))
@@ -73,9 +73,8 @@ long	*handle_inputs_digit(char **input, int original_array_index, int index)
 		while (split[split_index])
 		{
 			if (handle_input_digit(split[split_index]) == -1)
-				return (ft_free_split(split), free(array), \
-				ft_printf("Error\n"), NULL);
-			array[index++] = ft_atoi(split[split_index++]);
+				return (ft_free_split(split), free(array), ft_printf("Error\n"), NULL);
+			array[index++] = (int) ft_atoi(split[split_index++]);
 		}
 		ft_free_split(split);
 		split_index = 0;
