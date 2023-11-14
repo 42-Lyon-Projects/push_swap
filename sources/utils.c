@@ -40,3 +40,10 @@ void	ft_stack_to_sorted_array(t_stacks *stacks , int length, int *array, int ind
 		last_selected = INT_MAX;
 	}
 }
+
+void	ft_free_and_exit(t_stacks *stacks)
+{
+	free_stack(stacks->stack_a);
+	free_stack(stacks->stack_b);
+	exit(0);
+}

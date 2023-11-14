@@ -52,25 +52,26 @@ void		add_node_back(t_stack **stack, t_stack *node);
 void		remove_node_back(t_stack **stack);
 
 // # PUSHS # //
-int			push_a(t_stacks *stacks);
-int			push_b(t_stacks *stacks);
+int			push_a(t_stacks *stacks, char *type, t_boolean print);
+int			push_b(t_stacks *stacks, char *type, t_boolean print);
 
 // # REVERSES # //
-int			reverse_rotate(t_stack **head);
-void		reverse_rotate_a_and_b(t_stacks *stacks);
+void		reverse_rotate(t_stacks *stacks, t_stack **head, char *type, t_boolean print);
+void		reverse_rotate_a_and_b(t_stacks *stacks, char *type, t_boolean print);
 
 // # ROTATES # //
-int			rotate(t_stack **head);
-void		rotate_a_and_b(t_stacks *stacks);
+void		rotate(t_stacks *stacks, t_stack **head, char *type, t_boolean print);
+void		rotate_a_and_b(t_stacks *stacks, char *type, t_boolean print);
 
 // # SWAPS # //
-int			swap(t_stack *head);
-int			swap_a_and_b(t_stacks *stacks);
+int			swap(t_stack *head, char *type, t_boolean print);
+int			swap_a_and_b(t_stacks *stacks, char *type, t_boolean print);
 
 void		push_swap(t_stacks *stacks);
 
 // # UTILS # //
 void		ft_stack_to_sorted_array(t_stacks *stacks , int length, int *array, int index, int sub_index);
+void		ft_free_and_exit(t_stacks *stacks);
 
 // # ALGORITHMS # //
 void		sort_two(t_stacks *stacks);

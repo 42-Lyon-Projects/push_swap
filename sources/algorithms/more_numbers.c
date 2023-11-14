@@ -26,12 +26,12 @@ void sort_more(t_stacks *stacks)
 		while (index++ < stack_length)
 		{
 			if ((stacks->stack_a->index >> bits_index) & 1)
-				rotate(&stacks->stack_a);
+				rotate(stacks, &stacks->stack_a, "ra", _true);
 			else
-				push_b(stacks);
+				push_b(stacks, "pb", _true);
 		}
 		while (stacks->stack_b)
-			push_a(stacks);
+			push_a(stacks, "pa", _true);
 		bits_index++;
 	}
 }

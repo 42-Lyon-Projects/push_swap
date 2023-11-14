@@ -12,26 +12,28 @@
 
 #include "../../includes/push_swap.h"
 
-int	rotate(t_stack **head, char *type, t_boolean print)
+void	rotate(t_stacks *stacks, t_stack **head, char *type, t_boolean print)
 {
 	t_stack	*next;
 	t_stack	*new;
 
 	new = create_node((*head)->content);
 	if (!new)
-		return (-1);
+		ft_free_and_exit(stacks);
 	next = (*head)->next;
 	free(*head);
 	*head = next;
 	add_node_back(&next, new);
-	ft_printf("%s\n", type);
-	return (0);
+	if (print)
+		ft_printf("%s\n", type);
 }
 
-void	rotate_a_and_b(t_stacks *stacks)
+void	rotate_a_and_b(t_stacks *stacks, char *type, t_boolean print)
 {
 	if (stacks->stack_a)
-		reverse_rotate(&stacks->stack_a);
+		rotate(stacks, &stacks->stack_a, NULL, _false);
 	if (stacks->stack_b)
-		reverse_rotate(&stacks->stack_b);
+		rotate(stacks, &stacks->stack_b, NULL, _false);
+	if (print)
+		ft_printf("%s\n", type);
 }

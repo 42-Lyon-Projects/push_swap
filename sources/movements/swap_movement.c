@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int	swap(t_stack *head)
+int	swap(t_stack *head, char *type, t_boolean print)
 {
 	int	tmp_value;
 
@@ -21,14 +21,18 @@ int	swap(t_stack *head)
 	tmp_value = head->next->content;
 	head->next->content = head->content;
 	head->content = tmp_value;
+	if (print)
+		ft_printf("%s\n", type);
 	return (0);
 }
 
-int	swap_a_and_b(t_stacks *stacks)
+int	swap_a_and_b(t_stacks *stacks, char *type, t_boolean print)
 {
-	if (swap(stacks->stack_a) < 0)
+	if (swap(stacks->stack_a, NULL, _false) < 0)
 		return (-1);
-	if (swap(stacks->stack_b) < 0)
+	if (swap(stacks->stack_b, NULL, _false) < 0)
 		return (-1);
+	if (print)
+		ft_printf("%s\n", type);
 	return (0);
 }
