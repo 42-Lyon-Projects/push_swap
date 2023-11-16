@@ -6,12 +6,13 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:47:51 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/16 12:54:00 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:53:06 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+#include "stdio.h"
 int	main(int argc, char *argv[])
 {
 	int			*array;
@@ -31,7 +32,8 @@ int	main(int argc, char *argv[])
 	fill_stack(&stacks, array);
 	if (ft_stack_is_sorted(stacks.stack_a))
 		ft_free_and_exit(&stacks);
-	push_swap(&stacks);
+	//ft_display_stacks(stacks);
+	//push_swap(&stacks);
 	return (0);
 }
 

@@ -37,7 +37,7 @@ int orig_tab_index, int index);
 t_boolean	ft_array_has_duplicates(const int *array, int length);
 t_boolean	ft_array_contains_only_int(const int *array, int length);
 t_boolean	ft_array_contains_value(const int *array, int search, int length);
-
+void	ft_display_stacks(t_stacks stacks);
 // # STACKS # //
 t_stacks	init_stacks(void);
 t_boolean	ft_stack_is_sorted(t_stack *a_stack);
