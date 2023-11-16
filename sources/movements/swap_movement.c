@@ -27,14 +27,3 @@ int	swap(t_stacks *stacks, t_stack *head, char *type, t_boolean print)
 		re_indexing_stacks(stacks, stacks->array);
 	return (0);
 }
-
-int	swap_a_and_b(t_stacks *stacks, char *type, t_boolean print)
-{
-	if (swap(stacks, stacks->stack_a, NULL, _false) < 0)
-		return (-1);
-	if (swap(stacks, stacks->stack_b, NULL, _false) < 0)
-		return (-1);
-	if (print)
-		ft_printf("%s\n", type);
-	return (0);
-}

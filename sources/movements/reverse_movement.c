@@ -27,13 +27,3 @@ char *type, t_boolean print)
 		ft_printf("%s\n", type);
 	re_indexing_stacks(stacks, stacks->array);
 }
-
-void	reverse_rotate_a_and_b(t_stacks *stacks, char *type, t_boolean print)
-{
-	if (stacks->stack_a)
-		reverse_rotate(stacks, &stacks->stack_a, NULL, _false);
-	if (stacks->stack_b)
-		reverse_rotate(stacks, &stacks->stack_b, NULL, _false);
-	if (print)
-		ft_printf("%s\n", type);
-}

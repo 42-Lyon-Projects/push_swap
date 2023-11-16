@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:48:21 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/16 09:18:07 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:54:41 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_insulate_min_a(t_stacks *stacks)
 {
 	int	node_pos;
 
+	node_pos = ft_stack_find_lower(stacks->stack_a);
 	if (node_pos == 0)
 		return ;
 	else if (node_pos == stacks->length - 1)

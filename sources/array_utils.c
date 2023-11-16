@@ -56,25 +56,6 @@ t_boolean	ft_array_contains_only_int(const int *array, int length)
 	return (_true);
 }
 
-t_boolean	ft_array_is_sorted(const int *array, int length)
-{
-	int	previous_value;
-	int	current;
-	int	index;
-
-	previous_value = INT_MIN;
-	index = 0;
-	while (index < length)
-	{
-		current = array[index];
-		if (previous_value > current)
-			return (_false);
-		previous_value = current;
-		index++;
-	}
-	return (_true);
-}
-
 t_boolean	ft_array_has_duplicates(const int *array, int length)
 {
 	int	index;

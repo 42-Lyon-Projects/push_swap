@@ -36,7 +36,6 @@ int orig_tab_index, int index);
 
 t_boolean	ft_array_has_duplicates(const int *array, int length);
 t_boolean	ft_array_contains_only_int(const int *array, int length);
-t_boolean	ft_array_is_sorted(const int *array, int length);
 t_boolean	ft_array_contains_value(const int *array, int search, int length);
 
 // # STACKS # //
@@ -46,7 +45,6 @@ void		fill_stack(t_stacks *stacks, const int *array);
 void		ft_indexing_stack(t_stack **head_a, \
 const int *array, int array_length);
 void		free_stack(t_stack *head);
-void		ft_display_stacks(t_stacks stacks);
 int			ft_stack_size(t_stack *stack);
 void		re_indexing_stacks(t_stacks *stacks, int *mlc);
 int			ft_stack_find_lower(t_stack *stack);
@@ -65,8 +63,6 @@ int			push_b(t_stacks *stacks, char *type, t_boolean print);
 // # REVERSES # //
 void		reverse_rotate(t_stacks *stacks, t_stack **head, \
 char *type, t_boolean print);
-void		reverse_rotate_a_and_b(t_stacks *stacks, \
-char *type, t_boolean print);
 
 // # ROTATES # //
 void		rotate(t_stacks *stacks, t_stack **head, \
@@ -76,7 +72,6 @@ char *type, t_boolean print);
 
 // # SWAPS # //
 int			swap(t_stacks *stacks, t_stack *head, char *type, t_boolean print);
-int			swap_a_and_b(t_stacks *stacks, char *type, t_boolean print);
 
 void		ft_insulate_min_a(t_stacks *stacks);
 void		push_swap(t_stacks *stacks);
