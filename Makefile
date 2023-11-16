@@ -6,6 +6,7 @@ FILES = main.c						\
 		stack_manager.c				\
 		stack_utils.c				\
 		node_manager.c				\
+		free_utils.c				\
 		array_utils.c				\
 		utils.c						\
 		movements/push_movement.c	\
@@ -17,6 +18,7 @@ FILES = main.c						\
 		algorithms/four_numbers.c	\
 		algorithms/five_numbers.c	\
 		algorithms/more_numbers.c	\
+		algorithms/ft_insulate.c	\
 
 LIBFT = ./dependencies/libft/libft.a
 LIBFT_FLAGS = -L./dependencies/libft -l:libft.a
@@ -32,7 +34,6 @@ SOURCES = $(addprefix "sources/", $(SRCS:.c=.o))
 OBJS = $(addprefix $(OBJ_DIRECTORY), $(FILES:.c=.o))
 
 $(NAME): $(OBJ_DIRECTORY) $(OBJS) $(LIBFT)
-	$(MAKE_LIBFT)
 	$(CC) $(OBJS) $(LIBFT_FLAGS) -o $(NAME)
 
 $(LIBFT): force

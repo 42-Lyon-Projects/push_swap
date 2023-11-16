@@ -12,11 +12,10 @@
 
 #include "../includes/push_swap.h"
 
-
 t_boolean	ft_stack_is_sorted(t_stack *a_stack)
 {
-	t_stack *node;
-	long previous_value;
+	t_stack	*node;
+	long	previous_value;
 
 	previous_value = LONG_MIN;
 	node = a_stack;
@@ -45,26 +44,23 @@ int	ft_stack_size(t_stack *stack)
 	return (size);
 }
 
-void	ft_display_stacks(t_stacks stacks)
+int	ft_stack_find_lower(t_stack *stack)
 {
-	ft_printf("STACKS :\n");
-	ft_printf("-> A :\n");
-	t_stack *tmp_a = stacks.stack_a;
-	int index = 0;
-	while (tmp_a)
-	{
-		ft_printf("Position [%d] | Content : %d\n", tmp_a->index, tmp_a->content);
-		index++;
-		tmp_a = tmp_a->next;
-	}
-	ft_printf("\n-> B :\n");
-	t_stack *tmp_b = stacks.stack_b;
-	index = 0;
-	while (tmp_b)
-	{
-		ft_printf("Position [%d] | Content : %d\n", index, tmp_b->content);
-		index++;
-		tmp_b = tmp_b->next;
-	}
+	int	index;
+	int	previous_value;
+	int	lower_node_pos;
 
+	index = 0;
+	previous_value = INT_MAX;
+	while (stack)
+	{
+		if (stack->content < previous_value)
+		{
+			previous_value = stack->content;
+			lower_node_pos = index;
+		}
+		stack = stack->next;
+		index++;
+	}
+	return (lower_node_pos);
 }

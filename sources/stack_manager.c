@@ -6,15 +6,15 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:32:01 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/13 14:21:30 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/16 08:21:07 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stacks init_stacks(void)
+t_stacks	init_stacks(void)
 {
-	t_stacks stacks;
+	t_stacks	stacks;
 
 	stacks.stack_a = NULL;
 	stacks.stack_b = NULL;
@@ -23,11 +23,10 @@ t_stacks init_stacks(void)
 	return (stacks);
 }
 
-#include "stdio.h"
-void fill_stack(t_stacks *stacks, const int *array)
+void	fill_stack(t_stacks *stacks, const int *array)
 {
-	int index;
-	int value;
+	int	index;
+	int	value;
 
 	index = 0;
 	while (index < stacks->length)
@@ -37,27 +36,13 @@ void fill_stack(t_stacks *stacks, const int *array)
 	}
 }
 
-void free_stack(t_stack *head)
+void	ft_indexing_stack(t_stack **head, const int *array, int array_length)
 {
-	t_stack *tmp;
-
-	tmp = NULL;
-	while (head)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-	free(head);
-}
-
-void ft_indexing_stack(t_stack **head, const int *array, int array_length)
-{
-	int index;
-	t_stack *tmp_stack;
+	int		index;
+	t_stack	*tmp_stack;
 
 	index = 1;
-	if(head == NULL || *head == NULL)
+	if (head == NULL || *head == NULL)
 		return ;
 	while (index < array_length + 1)
 	{

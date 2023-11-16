@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-void sort_five(t_stacks *stacks)
+void	sort_five(t_stacks *stacks)
 {
-	(void) stacks;
+	sort_four(stacks);
 }

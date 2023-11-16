@@ -12,7 +12,8 @@
 
 #include "../../includes/push_swap.h"
 
-void	reverse_rotate(t_stacks *stacks, t_stack **head, char *type, t_boolean print)
+void	reverse_rotate(t_stacks *stacks, t_stack **head, \
+char *type, t_boolean print)
 {
 	t_stack	*new;
 

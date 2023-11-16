@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-void sort_more(t_stacks *stacks)
+void	sort_more(t_stacks *stacks)
 {
 	int	bits_index;
 	int	index;

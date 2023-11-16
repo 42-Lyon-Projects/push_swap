@@ -55,14 +55,15 @@ static int	ft_array_len(char **input)
 	return (tab_len);
 }
 
-int	*handle_inputs_digit(t_stacks *stacks, char **input, int original_array_index, int index)
+int	*handle_inputs_digit(t_stacks *stacks, char **input, \
+int original_array_index, int index)
 {
 	int		split_index;
 	char	**split;
 	int		*array;
 
 	split_index = 0;
-	array = (int *) malloc((stacks->length = ft_array_len(input)) * sizeof(int));
+	array = malloc((stacks->length = ft_array_len(input)) * sizeof(int));
 	if (!array)
 		return (NULL);
 	while (index < (int) ft_str_tab_len(input))
@@ -73,7 +74,8 @@ int	*handle_inputs_digit(t_stacks *stacks, char **input, int original_array_inde
 		while (split[split_index])
 		{
 			if (handle_input_digit(split[split_index]) == -1)
-				return (ft_free_split(split), free(array), ft_printf("Error\n"), NULL);
+				return (ft_free_split(split), free(array), \
+				ft_printf("Error\n"), NULL);
 			array[index++] = (int) ft_atoi(split[split_index++]);
 		}
 		ft_free_split(split);

@@ -6,10 +6,9 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:19:53 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/14 14:05:59 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:41:30 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/push_swap.h"
 
@@ -75,7 +74,7 @@ void	remove_node_back(t_stack **stack)
 
 t_stack	*get_node_at(t_stack *head, int at)
 {
-	int	index;
+	int		index;
 	t_stack	*tmp_stack;
 
 	if (!head)
