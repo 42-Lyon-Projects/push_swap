@@ -18,8 +18,8 @@ t_stacks	init_stacks(void)
 
 	stacks.stack_a = NULL;
 	stacks.stack_b = NULL;
-	stacks.length = 0;
 	stacks.array = NULL;
+	stacks.length = 0;
 	return (stacks);
 }
 

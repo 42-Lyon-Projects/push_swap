@@ -15,25 +15,18 @@
 #include "stdio.h"
 int	main(int argc, char *argv[])
 {
-	int			*array;
 	t_stacks	stacks;
 
-	array = NULL;
 	if (argc < 2)
 		return (0);
 	stacks = init_stacks();
-	array = handle_inputs_digit(&stacks, argv, 1, 0);
-	stacks.input = array;
-	if (array == NULL)
-		return (0);
-	if (!ft_array_contains_only_int(array, \
-	stacks.length) || ft_array_has_duplicates(array, stacks.length))
-		return (ft_free(&stacks), ft_printf("Error\n", 0), 0);
-	fill_stack(&stacks, array);
+	handle_inputs_digit(&stacks, argv, 1);
 	if (ft_stack_is_sorted(stacks.stack_a))
 		ft_free_and_exit(&stacks);
-	//ft_display_stacks(stacks);
-	//push_swap(&stacks);
+	if (ft_stack_has_duplicates(stacks.stack_a))
+		return (ft_free(&stacks), ft_printf("Error\n", 0), 0);
+	ft_display_stacks(stacks);
+	push_swap(&stacks);
 	return (0);
 }
 

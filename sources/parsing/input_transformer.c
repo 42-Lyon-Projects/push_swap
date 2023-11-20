@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:04:57 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/16 18:31:44 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:36:45 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 static int	contains_only_numbers(char **input)
 {
-	int	array_index;
-	int index;
-	char *str;
+	int		array_index;
+	int		index;
+	char	*str;
 
 	array_index = 0;
 	index = 0;
@@ -29,7 +29,10 @@ static int	contains_only_numbers(char **input)
 		index = 0;
 		while (str[index])
 		{
-			if (!ft_isdigit(str[index]) && str[index] != '-' && str[index] != '+')
+			if (index > 0 && \
+			ft_is_sign(str[index]) && ft_is_sign(str[index - 1]))
+				return (-1);
+			if (!ft_isdigit(str[index]) && !ft_is_sign(str[index]))
 				return (-1);
 			index++;
 		}
@@ -38,57 +41,32 @@ static int	contains_only_numbers(char **input)
 	return (index);
 }
 
-static int	ft_array_len(char **input)
+void	handle_inputs_digit(t_stacks *stacks, char **input, int tab_index)
 {
-	int		original_array_index;
-	int		split_index;
-	int		tab_len;
-	char	**splitted;
-
-	original_array_index = 1;
-	split_index = 0;
-	tab_len = 0;
-	while (original_array_index < (int) ft_str_tab_len(input))
-	{
-		splitted = ft_split(input[original_array_index], ' ');
-		if (splitted == NULL)
-			break ;
-		if (contains_only_numbers(splitted) == -1)
-			return (ft_free_split(splitted), 0);
-		while (splitted[split_index++])
-			;
-		tab_len += split_index;
-		original_array_index++;
-		split_index = 0;
-		ft_free_split(splitted);
-	}
-	return (tab_len);
-}
-
-int	*handle_inputs_digit(t_stacks *stacks, char **input, \
-int original_array_index, int index)
-{
+	int		index;
 	int		split_index;
 	char	**split;
-	int		*array;
 
-	array = malloc((stacks->length = ft_array_len(input)) * sizeof(int));
-	if (!array)
-		return (NULL);
+	index = 0;
 	while (index < (int) ft_str_tab_len(input))
 	{
-		split = ft_split(input[original_array_index++], ' ');
+		split = ft_split(input[tab_index++], ' ');
 		if (split == NULL)
 			break ;
 		if (contains_only_numbers(split) == -1)
-			return (ft_free_split(split), free(array), ft_printf("Error\n"), NULL);
-		split_index = 0;
-		while (split[split_index] && contains_only_numbers(split) != -1)
 		{
-			int t = (int) ft_atoi(split[split_index++]);;
-			array[index++] = t;
+			ft_free_split(split);
+			ft_printf("Error\n");
+			ft_free_and_exit(stacks);
+			return ;
+		}
+		split_index = 0;
+		while (split[split_index])
+		{
+			add_node_back(&stacks->stack_a, \
+			create_node((int) ft_atoi(split[split_index++])));
+			stacks->length = stacks->length + 1;
 		}
 		ft_free_split(split);
 	}
-	return (array);
 }

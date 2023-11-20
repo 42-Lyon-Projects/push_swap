@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:46:18 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/14 15:23:02 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/19 14:44:49 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,20 @@ typedef struct s_stacks
 {
 	t_stack				*stack_a;
 	t_stack				*stack_b;
-	int					*input;
 	int					*array;
 	int					length;
 }						t_stacks;
 
-int			*handle_inputs_digit(t_stacks *stacks, char **input, \
-int orig_tab_index, int index);
+void		handle_inputs_digit(t_stacks *stacks, char **input, int tab_index);
 
-t_boolean	ft_array_has_duplicates(const int *array, int length);
-t_boolean	ft_array_contains_only_int(const int *array, int length);
-t_boolean	ft_array_contains_value(const int *array, int search, int length);
-void	ft_display_stacks(t_stacks stacks);
+
+t_boolean	ft_stack_has_duplicates(t_stack *head_a);
+t_boolean	ft_stack_contains_value(t_stack *head, int search);
+
+void		ft_display_stacks(t_stacks stacks);
 // # STACKS # //
 t_stacks	init_stacks(void);
 t_boolean	ft_stack_is_sorted(t_stack *a_stack);
-void		fill_stack(t_stacks *stacks, const int *array);
 void		ft_indexing_stack(t_stack **head_a, \
 const int *array, int array_length);
 void		free_stack(t_stack *head);
@@ -81,6 +79,7 @@ void		ft_stack_to_sorted_array(t_stacks *stacks, \
 int *array, int index, int sub_index);
 void		ft_free(t_stacks *stacks);
 void		ft_free_and_exit(t_stacks *stacks);
+int			*ft_stack_to_array(t_stack *a);
 
 // # ALGORITHMS # //
 void		sort_two(t_stacks *stacks);

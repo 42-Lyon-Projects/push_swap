@@ -6,66 +6,83 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:11 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/16 13:42:48 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/19 15:22:30 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static t_boolean	is_duplicated(int nb, const int *array, int length)
+static t_boolean	is_duplicated(int nb, t_stack *head)
 {
-	int	index;
-	int	amount;
+	int		amount;
+	t_stack	*tmp;
 
-	index = 0;
 	amount = 0;
-	while (index < length)
+	tmp = head;
+	while (tmp)
 	{
-		if (array[index] == nb)
+		if (tmp->content == nb)
 			amount++;
-		index++;
+		if (tmp->next)
+			tmp = tmp->next;
+		else
+			break ;
 	}
 	return (amount > 1);
 }
 
-t_boolean	ft_array_contains_value(const int *array, int search, int length)
+t_boolean	ft_stack_contains_value(t_stack *head, int search)
 {
-	int	index;
+	t_stack	*tmp;
 
-	index = 0;
-	while (index < length)
+	tmp = head;
+	while (tmp)
 	{
-		if (array[index] == search)
+		if (tmp->content == search)
 			return (_true);
-		index++;
+		if (tmp->next)
+			tmp = tmp->next;
+		else
+			break ;
 	}
 	return (_false);
 }
 
-t_boolean	ft_array_contains_only_int(const int *array, int length)
+t_boolean	ft_stack_has_duplicates(t_stack *head_a)
 {
-	int	index;
+	t_stack	*tmp;
 
-	index = 0;
-	while (index < length)
+	tmp = head_a;
+	while (tmp)
 	{
-		if (array[index] > INT_MAX || array[index] < INT_MIN)
-			return (_false);
-		index++;
-	}
-	return (_true);
-}
-
-t_boolean	ft_array_has_duplicates(const int *array, int length)
-{
-	int	index;
-
-	index = 0;
-	while (index < length)
-	{
-		if (is_duplicated(array[index], array, length))
+		if (is_duplicated(tmp->content, tmp))
 			return (_true);
-		index++;
+		if (tmp->next)
+			tmp = tmp->next;
+		else
+			break ;
 	}
 	return (_false);
+}
+
+int	*ft_stack_to_array(t_stack *a)
+{
+	int		*array;
+	int		lst_size;
+	int		index;
+	t_stack	*tmp;
+
+	lst_size = ft_stack_size(a);
+	array = ft_calloc(lst_size, sizeof(int));
+	if (!array)
+		return (NULL);
+	index = 0;
+	tmp = a;
+	while (index < lst_size)
+	{
+		array[index] = tmp->content;
+		tmp = tmp->next;
+		index++;
+	}
+	return (array);
 }

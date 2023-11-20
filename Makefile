@@ -26,7 +26,7 @@ OBJ_DIRECTORY = ./.obj/
 
 CC = gcc
 
-FLAGS = -c -Wall -Wextra -Werror -g3
+FLAGS = -c -g3 -Wall -Wextra -Werror
 #FLAGS = -c -g3 
 
 INCLUDES = ./includes/push_swap.h

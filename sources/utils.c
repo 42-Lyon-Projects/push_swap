@@ -27,7 +27,7 @@ int index, int sub_index)
 		{
 			node = get_node_at(stacks->stack_a, sub_index++);
 			while (node != NULL && \
-			ft_array_contains_value(array, node->content, stacks->length))
+			ft_stack_contains_value(stacks->stack_a, node->content))
 				node = get_node_at(stacks->stack_a, sub_index++);
 			if (!node)
 				break ;

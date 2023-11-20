@@ -16,8 +16,6 @@ void	ft_free(t_stacks *stacks)
 {
 	if (stacks->array)
 		free(stacks->array);
-	if (stacks->input)
-		free(stacks->input);
 	if (stacks->stack_a)
 		free_stack(stacks->stack_a);
 	if (stacks->stack_b)
