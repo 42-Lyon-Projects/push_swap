@@ -7,8 +7,6 @@ FILES = main.c						\
 		stack_utils.c				\
 		node_manager.c				\
 		free_utils.c				\
-		array_utils.c				\
-		utils.c						\
 		movements/push_movement.c	\
 		movements/reverse_movement.c\
 		movements/rotate_movement.c	\

@@ -15,5 +15,5 @@
 void	sort_two(t_stacks *stacks)
 {
 	if (stacks->stack_a->content > stacks->stack_a->next->content)
-		swap(stacks, stacks->stack_a, "sa", _true);
+		swap(stacks->stack_a, "sa", _true);
 }

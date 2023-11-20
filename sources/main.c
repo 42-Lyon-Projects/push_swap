@@ -6,13 +6,12 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:47:51 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/16 14:53:06 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:52:51 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-#include "stdio.h"
 int	main(int argc, char *argv[])
 {
 	t_stacks	stacks;
@@ -24,22 +23,15 @@ int	main(int argc, char *argv[])
 	if (ft_stack_is_sorted(stacks.stack_a))
 		ft_free_and_exit(&stacks);
 	if (ft_stack_has_duplicates(stacks.stack_a))
-		return (ft_free(&stacks), ft_printf("Error\n", 0), 0);
-	ft_display_stacks(stacks);
+		return (ft_free(&stacks), ft_putstr_fd("Error\n", 2), 0);
 	push_swap(&stacks);
 	return (0);
 }
 
 void	push_swap(t_stacks *stacks)
 {
-	int	*mlc;
-
-	mlc = ft_calloc(stacks->length + 1, sizeof (int ));
-	if (!mlc)
-		return ;
-	stacks->array = mlc;
-	ft_stack_to_sorted_array(stacks, mlc, 0, 0);
-	re_indexing_stacks(stacks, mlc);
+	if (stacks->stack_a)
+		ft_indexing_stack(&stacks->stack_a);
 	if (stacks->length == 2)
 		sort_two(stacks);
 	else if (stacks->length == 3)
@@ -50,5 +42,7 @@ void	push_swap(t_stacks *stacks)
 		sort_five(stacks);
 	else if (stacks->length > 5)
 		sort_more(stacks);
+
+	ft_display_stacks(*stacks);
 	ft_free_and_exit(stacks);
 }

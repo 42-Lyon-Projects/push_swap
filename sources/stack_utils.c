@@ -6,44 +6,11 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:32:01 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/14 15:44:08 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:09:05 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-
-t_boolean	ft_stack_is_sorted(t_stack *a_stack)
-{
-	t_stack	*node;
-	long	previous_value;
-
-	previous_value = LONG_MIN;
-	node = a_stack;
-	while (node)
-	{
-		if (previous_value > node->content)
-			return (_false);
-		previous_value = node->content;
-		node = node->next;
-	}
-	return (_true);
-}
-
-int	ft_stack_size(t_stack *stack)
-{
-	int		size;
-	t_stack	*tmp;
-
-	size = 0;
-	tmp = stack;
-	while (tmp)
-	{
-		size++;
-		tmp = tmp->next;
-	}
-	return (size);
-}
 
 int	ft_stack_find_lower(t_stack *stack)
 {
@@ -55,7 +22,7 @@ int	ft_stack_find_lower(t_stack *stack)
 	previous_value = INT_MAX;
 	while (stack)
 	{
-		if (stack->content < previous_value)
+		if (previous_value > stack->content)
 		{
 			previous_value = stack->content;
 			lower_node_pos = index;
@@ -66,26 +33,60 @@ int	ft_stack_find_lower(t_stack *stack)
 	return (lower_node_pos);
 }
 
-void	ft_display_stacks(t_stacks stacks)
+int	ft_stack_find_high(t_stack *stack)
 {
-	ft_printf("STACKS :\n");
-	ft_printf("-> A :\n");
-	t_stack *tmp_a = stacks.stack_a;
-	int index = 0;
-	while (tmp_a)
-	{
-		ft_printf("Position [%d] | Content : %d\n", tmp_a->index, tmp_a->content);
-		index++;
-		tmp_a = tmp_a->next;
-	}
-	ft_printf("\n-> B :\n");
-	t_stack *tmp_b = stacks.stack_b;
-	index = 0;
-	while (tmp_b)
-	{
-		ft_printf("Position [%d] | Content : %d\n", index, tmp_b->content);
-		index++;
-		tmp_b = tmp_b->next;
-	}
+	int	index;
+	int	previous_value;
+	int	bigger_node_pos;
 
+	index = 0;
+	previous_value = INT_MIN;
+	while (stack)
+	{
+		if (stack->content > previous_value)
+		{
+			previous_value = stack->content;
+			bigger_node_pos = index;
+		}
+		stack = stack->next;
+		index++;
+	}
+	return (bigger_node_pos);
 }
+
+static t_boolean	is_duplicated(int nb, t_stack *head)
+{
+	int		amount;
+	t_stack	*tmp;
+
+	amount = 0;
+	tmp = head;
+	while (tmp)
+	{
+		if (tmp->content == nb)
+			amount++;
+		if (tmp->next)
+			tmp = tmp->next;
+		else
+			break ;
+	}
+	return (amount > 1);
+}
+
+t_boolean	ft_stack_has_duplicates(t_stack *head_a)
+{
+	t_stack	*tmp;
+
+	tmp = head_a;
+	while (tmp)
+	{
+		if (is_duplicated(tmp->content, tmp))
+			return (_true);
+		if (tmp->next)
+			tmp = tmp->next;
+		else
+			break ;
+	}
+	return (_false);
+}
+
