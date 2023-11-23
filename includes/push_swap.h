@@ -30,6 +30,7 @@ typedef struct s_stacks
 }						t_stacks;
 
 void		handle_inputs_digit(t_stacks *stacks, char **input, int tab_index);
+int			ft_overflow_atoi(const char *str);
 
 t_boolean	ft_stack_has_duplicates(t_stack *head_a);
 

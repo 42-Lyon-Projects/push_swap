@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:32:01 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/20 16:09:17 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:07:47 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_indexing_stack(t_stack **head)
 	tmp_stack = *head;
 	lower = get_node_at((*head), ft_stack_find_lower(tmp_stack))->content;
 	higher = get_node_at((*head), ft_stack_find_high(tmp_stack))->content;
-
 	while (lower <= higher)
 	{
 		while (tmp_stack)
@@ -86,18 +85,23 @@ t_boolean	ft_stack_is_sorted(t_stack *a_stack)
 
 void	ft_display_stacks(t_stacks stacks)
 {
+	t_stack	*tmp_b;
+	t_stack	*tmp_a;
+	int		index;
+
+	tmp_a = stacks.stack_a;
+	tmp_b = stacks.stack_b;
+	index = 0;
 	ft_printf("STACKS :\n");
 	ft_printf("-> A :\n");
-	t_stack *tmp_a = stacks.stack_a;
-	int index = 0;
 	while (tmp_a)
 	{
-		ft_printf("Position [%d] | Content : %d\n", tmp_a->index, tmp_a->content);
+		ft_printf("Position [%d] | Content : %d\n", \
+		tmp_a->index, tmp_a->content);
 		index++;
 		tmp_a = tmp_a->next;
 	}
 	ft_printf("\n-> B :\n");
-	t_stack *tmp_b = stacks.stack_b;
 	index = 0;
 	while (tmp_b)
 	{

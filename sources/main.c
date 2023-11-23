@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:47:51 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/20 14:52:51 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:06:43 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	push_swap(t_stacks *stacks)
 		sort_five(stacks);
 	else if (stacks->length > 5)
 		sort_more(stacks);
-
 	ft_display_stacks(*stacks);
 	ft_free_and_exit(stacks);
 }

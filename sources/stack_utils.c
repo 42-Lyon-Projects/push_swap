@@ -90,3 +90,29 @@ t_boolean	ft_stack_has_duplicates(t_stack *head_a)
 	return (_false);
 }
 
+int	ft_overflow_atoi(const char *str)
+{
+	int	sign;
+	int	base;
+	int	i;
+
+	sign = 1;
+	base = 0;
+	i = 0;
+	while (ft_is_space(str[i]))
+		i++;
+	if (ft_is_sign(str[i]))
+		sign = 1 - 2 * (str[i++] == '-');
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		if (base > INT_MAX / 10 || (base == INT_MAX / 10 && str[i] - '0' > 7))
+		{
+			if (sign == 1)
+				return (INT_MAX);
+			else
+				return (INT_MIN);
+		}
+		base = 10 * base + (str[i++] - '0');
+	}
+	return (base * sign);
+}
