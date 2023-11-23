@@ -7,8 +7,6 @@ FILES = main.c						\
 		stack_utils.c				\
 		node_manager.c				\
 		free_utils.c				\
-		array_utils.c				\
-		utils.c						\
 		movements/push_movement.c	\
 		movements/reverse_movement.c\
 		movements/rotate_movement.c	\
@@ -26,7 +24,7 @@ OBJ_DIRECTORY = ./.obj/
 
 CC = gcc
 
-FLAGS = -c -Wall -Wextra -Werror -g3
+FLAGS = -c -g3 -Wall -Wextra -Werror
 #FLAGS = -c -g3 
 
 INCLUDES = ./includes/push_swap.h

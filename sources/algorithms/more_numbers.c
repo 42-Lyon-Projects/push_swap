@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:20 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/14 13:53:10 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:05:08 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void	sort_more(t_stacks *stacks)
 	while (!ft_stack_is_sorted(stacks->stack_a))
 	{
 		index = 0;
-		while (index++ < stack_length)
+		while (index < stack_length)
 		{
 			if ((stacks->stack_a->index >> bits_index) & 1)
 				rotate(stacks, &stacks->stack_a, "ra", _true);
 			else
 				push_b(stacks, "pb", _true);
+			index++;
 		}
 		while (stacks->stack_b)
 			push_a(stacks, "pa", _true);
