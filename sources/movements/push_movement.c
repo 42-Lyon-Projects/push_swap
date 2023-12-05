@@ -28,7 +28,7 @@ int	push_a(t_stacks *stacks, char *type, t_boolean print)
 	stacks->stack_b = tmp;
 	new_first_a = create_node(value, index);
 	if (!new_first_a)
-		ft_free_and_exit(stacks);
+		ft_free_and_exit(stacks, 1);
 	new_first_a->next = stacks->stack_a;
 	stacks->stack_a = new_first_a;
 	if (print)
@@ -52,7 +52,7 @@ int	push_b(t_stacks *stacks, char *type, t_boolean print)
 	stacks->stack_a = tmp;
 	new_first_b = create_node(value, index);
 	if (!new_first_b)
-		ft_free_and_exit(stacks);
+		ft_free_and_exit(stacks, 1);
 	new_first_b->next = stacks->stack_b;
 	stacks->stack_b = new_first_b;
 	if (print)

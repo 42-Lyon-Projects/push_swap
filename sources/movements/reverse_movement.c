@@ -20,7 +20,7 @@ char *type, t_boolean print)
 	new = create_node(last_node(*head)->content, \
 	last_node(*head)->index);
 	if (!new)
-		ft_free_and_exit(stacks);
+		ft_free_and_exit(stacks, 1);
 	new->next = (*head);
 	(*head) = new;
 	remove_node_back(head);

@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:32:01 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/23 09:07:47 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:15:16 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,29 @@ t_stacks	init_stacks(void)
 
 void	ft_indexing_stack(t_stack **head)
 {
-	int		lower;
-	int		higher;
+	int		previous_value;
 	int		index;
-	t_stack	*tmp_stack;
+	t_stack	*tmp;
+	t_stack	*lower_node;
 
+	previous_value = INT_MAX;
+	tmp = *head;
 	index = 0;
-	if (head == NULL || *head == NULL)
-		return ;
-	tmp_stack = *head;
-	lower = get_node_at((*head), ft_stack_find_lower(tmp_stack))->content;
-	higher = get_node_at((*head), ft_stack_find_high(tmp_stack))->content;
-	while (lower <= higher)
+	while (ft_finds_non_indexed(*head) != -1)
 	{
-		while (tmp_stack)
+		while (tmp)
 		{
-			if (tmp_stack->content == lower)
-				tmp_stack->index = index++;
-			tmp_stack = tmp_stack->next;
+			if (previous_value >= tmp->content && tmp->index == -1)
+			{
+				previous_value = tmp->content;
+				lower_node = tmp;
+			}
+			tmp = tmp->next;
 		}
-		tmp_stack = *head;
-		lower++;
+		previous_value = INT_MAX;
+		lower_node->index = index;
+		tmp = *head;
+		index++;
 	}
 }
 
@@ -81,32 +83,4 @@ t_boolean	ft_stack_is_sorted(t_stack *a_stack)
 			break ;
 	}
 	return (_true);
-}
-
-void	ft_display_stacks(t_stacks stacks)
-{
-	t_stack	*tmp_b;
-	t_stack	*tmp_a;
-	int		index;
-
-	tmp_a = stacks.stack_a;
-	tmp_b = stacks.stack_b;
-	index = 0;
-	ft_printf("STACKS :\n");
-	ft_printf("-> A :\n");
-	while (tmp_a)
-	{
-		ft_printf("Position [%d] | Content : %d\n", \
-		tmp_a->index, tmp_a->content);
-		index++;
-		tmp_a = tmp_a->next;
-	}
-	ft_printf("\n-> B :\n");
-	index = 0;
-	while (tmp_b)
-	{
-		ft_printf("Position [%d] | Content : %d\n", index, tmp_b->content);
-		index++;
-		tmp_b = tmp_b->next;
-	}
 }

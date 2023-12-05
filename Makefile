@@ -1,4 +1,4 @@
-NAME = pushswap
+NAME = push_swap
 MAKE_LIBFT = make -C ./dependencies/libft
 
 FILES = main.c						\
@@ -22,10 +22,8 @@ LIBFT = ./dependencies/libft/libft.a
 LIBFT_FLAGS = -L./dependencies/libft -l:libft.a
 OBJ_DIRECTORY = ./.obj/
 
-CC = gcc
-
-FLAGS = -c -g3 -Wall -Wextra -Werror
-#FLAGS = -c -g3 
+CC = cc
+FLAGS = -c -Wall -Wextra -Werror
 
 INCLUDES = ./includes/push_swap.h
 SOURCES = $(addprefix "sources/", $(SRCS:.c=.o))
@@ -46,11 +44,13 @@ $(OBJ_DIRECTORY):
 all : $(NAME)
 
 clean :
-	$(RM) $(NAME)
 	rm -rf $(OBJ_DIRECTORY)
+	make -C ./dependencies/libft clean
+
 
 fclean : clean
 	rm -rf $(NAME)
+	make -C ./dependencies/libft fclean
 
 re : fclean all
 

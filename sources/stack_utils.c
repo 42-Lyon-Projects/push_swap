@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:32:01 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/20 16:09:05 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:35:55 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,19 @@ int	ft_stack_find_lower(t_stack *stack)
 	return (lower_node_pos);
 }
 
-int	ft_stack_find_high(t_stack *stack)
+int	ft_finds_non_indexed(t_stack *stack)
 {
 	int	index;
-	int	previous_value;
-	int	bigger_node_pos;
 
 	index = 0;
-	previous_value = INT_MIN;
 	while (stack)
 	{
-		if (stack->content > previous_value)
-		{
-			previous_value = stack->content;
-			bigger_node_pos = index;
-		}
+		if (stack->index == -1)
+			return (index);
 		stack = stack->next;
 		index++;
 	}
-	return (bigger_node_pos);
+	return (-1);
 }
 
 static t_boolean	is_duplicated(int nb, t_stack *head)
@@ -88,31 +82,4 @@ t_boolean	ft_stack_has_duplicates(t_stack *head_a)
 			break ;
 	}
 	return (_false);
-}
-
-int	ft_overflow_atoi(const char *str)
-{
-	int	sign;
-	int	base;
-	int	i;
-
-	sign = 1;
-	base = 0;
-	i = 0;
-	while (ft_is_space(str[i]))
-		i++;
-	if (ft_is_sign(str[i]))
-		sign = 1 - 2 * (str[i++] == '-');
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		if (base > INT_MAX / 10 || (base == INT_MAX / 10 && str[i] - '0' > 7))
-		{
-			if (sign == 1)
-				return (INT_MAX);
-			else
-				return (INT_MIN);
-		}
-		base = 10 * base + (str[i++] - '0');
-	}
-	return (base * sign);
 }

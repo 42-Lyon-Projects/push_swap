@@ -6,7 +6,7 @@
 /*   By: jbadaire <jbadaire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:19:53 by jbadaire          #+#    #+#             */
-/*   Updated: 2023/11/20 15:47:14 by jbadaire         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:44:14 by jbadaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,4 @@ void	remove_node_back(t_stack **stack)
 	last_node = tmp_stack->next;
 	tmp_stack->next = NULL;
 	free(last_node);
-}
-
-t_stack	*get_node_at(t_stack *head, int at)
-{
-	int		index;
-	t_stack	*tmp_stack;
-
-	if (!head)
-		return (NULL);
-	index = 0;
-	tmp_stack = head;
-	while (index != at)
-	{
-		tmp_stack = tmp_stack->next;
-		index++;
-	}
-	return (tmp_stack);
 }

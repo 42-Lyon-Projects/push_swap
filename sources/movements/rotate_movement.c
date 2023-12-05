@@ -19,7 +19,7 @@ void	rotate(t_stacks *stacks, t_stack **head, char *type, t_boolean print)
 
 	new = create_node((*head)->content, (*head)->index);
 	if (!new)
-		ft_free_and_exit(stacks);
+		ft_free_and_exit(stacks, 1);
 	next = (*head)->next;
 	free(*head);
 	*head = next;
